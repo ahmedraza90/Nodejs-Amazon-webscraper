@@ -3,7 +3,7 @@ const express = require('express')
 const request = require('request-promise')
 const app = express()
 
-const key = '1b23a0b38888d821511f83a01228694f'
+
 const url = `http://api.scraperapi.com?api_key=${process.env.KEY}&autoparse=true`
 app.use(express.json())
 
@@ -11,6 +11,7 @@ app.get('/',(req,res)=>{
    res.send('WELCOME TO AMAZON SCRAPER API')
 }) 
 
+//for product details
 app.get('/product/:productId', async (req,res)=>{
     
      const { productId } = req.params
@@ -22,6 +23,7 @@ app.get('/product/:productId', async (req,res)=>{
      }
 })
 
+//for produuct reviews
 app.get('/product/:productId/reviews', async (req,res)=>{
     
     const { productId } = req.params
@@ -34,6 +36,7 @@ app.get('/product/:productId/reviews', async (req,res)=>{
     }
 })
 
+//for product offers
 app.get('/product/:productId/offers', async (req,res)=>{
     
     const { productId } = req.params
@@ -46,6 +49,7 @@ app.get('/product/:productId/offers', async (req,res)=>{
     }
 })
 
+//for search results
 app.get('/search/:searchQuery', async (req,res)=>{
     
     const { searchQuery } = req.params
